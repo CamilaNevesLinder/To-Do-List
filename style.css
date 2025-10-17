@@ -1,0 +1,79 @@
+:root {
+  --main-pink: #e777a6;
+  --ligth-pink: #ffd6e0;
+  --button-pink: #e7abb4;
+  --pink-hover: #ffe4e1;
+  --ligth-yellow: #e9e7dd;
+  --background: #fff8f5;
+  --text: #444;
+  --white: #fff;
+  --main-font: "Poppins", sans-serif;
+}
+
+body {
+  font-family: var(--main-font);
+  background-color: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar {
+  background: linear-gradient(to right, #ffd6e0, #fff3b0);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  color: var(--main-pink);
+  font-weight: bold;
+  font-family: var(--main-font);
+}
+
+.myRoutine {
+  text-decoration: none;
+  color: var(--main-pink);
+  font-family: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 2rem;
+  border: 0.2rem solid;
+  border-radius: 2rem;
+  border-color: var(--button-pink);
+  padding: 0.4rem;
+  background-color: var(--background);
+}
+
+.myRoutine:hover {
+  background-color: var(--pink-hover);
+}
+
+.calendar {
+  text-decoration: none;
+  color: var(--main-pink);
+  font-family: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 2rem;
+  border: 0.2rem solid;
+  border-radius: 2rem;
+  border-color: var(--button-pink);
+  padding: 0.4rem;
+  background-color: var(--background);
+}
+
+.calendar:hover {
+  background-color: var(--pink-hover);
+}
+
+.todayDate {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  font-family: var(--main-font);
+  font-size: 2rem;
+  color: var(--main-pink);
+}
