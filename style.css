@@ -14,6 +14,9 @@ body {
   font-family: var(--main-font);
   background-color: var(--background);
   color: var(--text);
+}
+
+* {
   margin: 0;
   padding: 0;
 }
@@ -49,6 +52,9 @@ body {
 
 .myRoutine:hover {
   background-color: var(--pink-hover);
+  scale: 1.025;
+  transition-timing-function: ease;
+  cursor: pointer;
 }
 
 .calendar {
@@ -57,16 +63,27 @@ body {
   font-family: var(--text);
   font-size: 1rem;
   font-weight: 500;
-  margin-right: 2rem;
-  border: 0.2rem solid;
+  border: 0.2rem solid var(--button-pink);
   border-radius: 2rem;
-  border-color: var(--button-pink);
-  padding: 0.4rem;
+  padding: 0.4rem 0.8rem;
   background-color: var(--background);
+  cursor: pointer;
+  transition: all 0.2s ease; /* transição suave */
+  margin-right: 1rem;
 }
 
 .calendar:hover {
   background-color: var(--pink-hover);
+  transform: scale(1.025);
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .todayDate {
@@ -76,4 +93,94 @@ body {
   font-family: var(--main-font);
   font-size: 2rem;
   color: var(--main-pink);
+}
+
+.dateInNumbers {
+  display: flex;
+  justify-content: center;
+  font-family: var(--main-font);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--main-pink);
+}
+
+.addBtn {
+  margin-top: 1rem;
+  font-family: var(--text);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--main-pink);
+  border: 0.2rem solid;
+  border-radius: 2rem;
+  padding: 0.4rem;
+  background-color: var(--background);
+  outline: none;
+}
+
+.addBtn:hover {
+  background-color: var(--pink-hover);
+  scale: 1.025;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.textTask {
+  margin-top: 1rem;
+  border: 0.2rem solid;
+  border-radius: 2rem;
+  border-color: var(--main-pink);
+  padding: 0.4rem;
+  outline: none;
+}
+
+.textTask:hover {
+  cursor: pointer;
+  background-color: var(--pink-hover);
+}
+
+.delete {
+  margin-top: 1rem;
+  border: 0.2rem solid;
+  border-radius: 2rem;
+  border-color: var(--main-pink);
+  padding: 0.7rem;
+  outline: none;
+  font-family: var(--text);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--main-pink);
+  background-color: var(--background);
+}
+
+.delete:hover {
+  cursor: pointer;
+  background-color: var(--pink-hover);
+}
+
+#taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#taskList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-checkbox {
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.task-checkbox:hover {
+  cursor: pointer;
+}
+
+.task-text {
+  font-size: 1.5rem;
 }
