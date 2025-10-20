@@ -1,10 +1,9 @@
 :root {
-  --main-pink: #e777a6;
-  --ligth-pink: #ffd6e0;
-  --button-pink: #e7abb4;
-  --pink-hover: #ffe4e1;
-  --ligth-yellow: #e9e7dd;
-  --background: #fff8f5;
+  --main-pink: #d07076;
+  --ligth-pink: #fce1e6;
+  --pink-hover: #f3d0d2;
+  --background: #fce7e6;
+  --background-today: #fce1e6;
   --text: #444;
   --white: #fff;
   --main-font: "Poppins", sans-serif;
@@ -22,7 +21,7 @@ body {
 }
 
 .top-bar {
-  background: linear-gradient(to right, #ffd6e0, #fff3b0);
+  background: linear-gradient(to right, #ffd6e0, #f08080);
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -45,7 +44,7 @@ body {
   margin-right: 2rem;
   border: 0.2rem solid;
   border-radius: 2rem;
-  border-color: var(--button-pink);
+  border-color: var(--main-pink);
   padding: 0.4rem;
   background-color: var(--background);
 }
@@ -63,7 +62,7 @@ body {
   font-family: var(--text);
   font-size: 1rem;
   font-weight: 500;
-  border: 0.2rem solid var(--button-pink);
+  border: 0.2rem solid var(--main-pink);
   border-radius: 2rem;
   padding: 0.4rem 0.8rem;
   background-color: var(--background);
@@ -126,6 +125,7 @@ body {
 
 .textTask {
   margin-top: 1rem;
+  margin-bottom: 1rem;
   border: 0.2rem solid;
   border-radius: 2rem;
   border-color: var(--main-pink);
@@ -143,10 +143,10 @@ body {
   border: 0.2rem solid;
   border-radius: 2rem;
   border-color: var(--main-pink);
-  padding: 0.7rem;
+  padding: 0.2rem;
   outline: none;
   font-family: var(--text);
-  font-size: 1.35rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--main-pink);
   background-color: var(--background);
@@ -159,16 +159,17 @@ body {
 
 #taskList {
   list-style: none;
-  padding: 0;
+  padding: 1rem;
   margin: 0;
 }
 
 #taskList li {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 16rem;
   padding: 0.5rem 1rem;
-  border-bottom: 1px solid #ddd;
+  padding: 1rem;
 }
 
 .task-checkbox {
@@ -183,4 +184,15 @@ body {
 
 .task-text {
   font-size: 1.5rem;
+}
+
+.today-section {
+  background-color: var(--background-today);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+  width: 600px;
+  margin: auto;
+  margin-top: 5rem;
+  border-radius: 8rem;
 }
