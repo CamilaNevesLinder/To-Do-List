@@ -90,7 +90,7 @@ function addTask() {
 
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("delete")) {
-    const li = e.target.parentElement;
+    const li = e.target.closest("li");
     const checkbox = li.querySelector(".task-checkbox");
     const id = Number(checkbox.dataset.id);
 
