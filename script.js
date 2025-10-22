@@ -9,9 +9,7 @@ dateInNumbers.textContent = formattedDate;
 
 btnAdd.addEventListener("click", addTask);
 input.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    addTask();
-  }
+  if (e.key === "Enter") addTask();
 });
 
 let tasks = [];
@@ -19,34 +17,75 @@ let idCounter = 1;
 
 function addTask() {
   const task = input.value.trim();
+  if (task === "") return;
 
-  if (task !== "") {
-    const taskId = idCounter++;
-    const newTask = document.createElement("li");
+  const taskId = idCounter++;
+  const newTask = document.createElement("li");
 
-    newTask.innerHTML = `
-  
-    <label class="task-label">
-        <input type="checkbox" class="task-checkbox" data-id="${taskId}">
-        <span class="task-text">${task}</span>
-      </label>
-      <button class="delete">Delete</button>
+  newTask.innerHTML = `
+   <div class="task-main">
+  <label class="task-label">
+    <input type="checkbox" class="task-checkbox" data-id="${taskId}">
+    <span class="task-text">${task}</span>
+  </label>
+  <button class="delete">Delete</button>
+</div>
+
+    <div class="description-wrapper">
       <input type="text" class="description" placeholder="description">
-    
-    `;
+      <p class="description-text"></p>
+    </div>
+  `;
 
-    list.appendChild(newTask);
-    input.value = "";
+  list.appendChild(newTask);
+  input.value = "";
 
-    const taskObject = {
-      id: taskId,
-      title: task,
-      createdAt: new Date(),
-      description: "aaa",
-    };
+  const descriptionInput = newTask.querySelector(".description");
+  const descriptionText = newTask.querySelector(".description-text");
 
-    tasks.push(taskObject);
-  }
+  descriptionInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const note = descriptionInput.value.trim();
+      if (note === "") return;
+
+      const taskObj = tasks.find((t) => t.id === taskId);
+      if (taskObj) taskObj.description = note;
+
+      descriptionText.innerHTML = `
+        ${note} 
+        <span class="edit-description" style="cursor:pointer; margin-left:8px;">✎</span>
+        <span class="delete-description" style="cursor:pointer; margin-left:4px;">×</span>
+      `;
+
+      descriptionInput.value = "";
+    }
+  });
+
+  descriptionText.addEventListener("click", function (e) {
+    const taskObj = tasks.find((t) => t.id === taskId);
+    if (!taskObj) return;
+
+    // Editar
+    if (e.target.classList.contains("edit-description")) {
+      descriptionInput.value = taskObj.description;
+      descriptionInput.focus();
+      descriptionText.textContent = "";
+    }
+
+    if (e.target.classList.contains("delete-description")) {
+      descriptionText.textContent = "";
+      if (taskObj) taskObj.description = "";
+    }
+  });
+
+  const taskObject = {
+    id: taskId,
+    title: task,
+    createdAt: new Date(),
+    description: "",
+  };
+  tasks.push(taskObject);
 }
 
 document.addEventListener("click", function (e) {
@@ -55,10 +94,8 @@ document.addEventListener("click", function (e) {
     const checkbox = li.querySelector(".task-checkbox");
     const id = Number(checkbox.dataset.id);
 
-    tasks = tasks.filter((oldTask) => oldTask.id !== id);
+    tasks = tasks.filter((t) => t.id !== id);
     li.remove();
-
-    console.log("Removido:", id, tasks);
   }
 });
 
@@ -71,15 +108,3 @@ document.addEventListener("click", function (e) {
     if (task) task.isChecked = checked;
   }
 });
-
-const secondInput = document.querySelector(".description");
-
-secondInput.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    addDiscription();
-  }
-});
-
-function addDiscription() {
-  const note = secondInput.value.trim();
-}

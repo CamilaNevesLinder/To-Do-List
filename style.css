@@ -169,7 +169,7 @@ body {
 }
 
 .tasks li {
-  display: flex;
+  display: block;
   position: relative;
   align-items: center;
   padding: 1rem;
@@ -262,4 +262,14 @@ body {
   position: absolute;
   top: 0;
   left: 2px;
+}
+
+.task-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.description-wrapper {
+  margin-top: 0.5rem;
 }
