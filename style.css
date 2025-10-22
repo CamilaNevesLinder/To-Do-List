@@ -139,9 +139,11 @@ body {
 }
 
 .delete {
+  position: absolute;
+  right: 1rem;
   margin-top: 1rem;
   border: 0.2rem solid;
-  border-radius: 2rem;
+  border-radius: 0.3rem 0.6rem;
   border-color: var(--main-pink);
   padding: 0.2rem;
   outline: none;
@@ -150,6 +152,7 @@ body {
   font-weight: 600;
   color: var(--main-pink);
   background-color: var(--background);
+  cursor: pointer;
 }
 
 .delete:hover {
@@ -157,19 +160,24 @@ body {
   background-color: var(--pink-hover);
 }
 
-#taskList {
+.tasks {
   list-style: none;
   padding: 1rem;
   margin: 0;
 }
 
-#taskList li {
+.tasks li {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.task-label {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16rem;
-  padding: 0.5rem 1rem;
-  padding: 1rem;
+  margin-right: 0.5rem; /* Distância fixa entre checkbox e nome */
 }
 
 .task-checkbox {
@@ -183,6 +191,7 @@ body {
 }
 
 .task-text {
+  font-family: var(--text);
   font-size: 1.5rem;
 }
 
@@ -191,8 +200,10 @@ body {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
-  width: 600px;
+  width: 700px;
+  height: auto;
   margin: auto;
-  margin-top: 5rem;
+  margin-top: 4rem;
   border-radius: 8rem;
+  padding: 2rem;
 }
