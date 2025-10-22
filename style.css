@@ -153,6 +153,7 @@ body {
   color: var(--main-pink);
   background-color: var(--background);
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .delete:hover {
@@ -172,12 +173,14 @@ body {
   align-items: center;
   padding: 1rem;
   margin-bottom: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .task-label {
   display: flex;
   align-items: center;
   margin-right: 0.5rem; /* Distância fixa entre checkbox e nome */
+  flex-shrink: 1;
 }
 
 .task-checkbox {
@@ -193,6 +196,8 @@ body {
 .task-text {
   font-family: var(--text);
   font-size: 1.5rem;
+  word-break: break-word;
+  max-width: 31.25rem;
 }
 
 .today-section {
