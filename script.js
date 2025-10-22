@@ -31,6 +31,7 @@ function addTask() {
         <span class="task-text">${task}</span>
       </label>
       <button class="delete">Delete</button>
+      <input type="text" class="description" placeholder="description">
     
     `;
 
@@ -41,6 +42,7 @@ function addTask() {
       id: taskId,
       title: task,
       createdAt: new Date(),
+      description: "aaa",
     };
 
     tasks.push(taskObject);
@@ -69,3 +71,15 @@ document.addEventListener("click", function (e) {
     if (task) task.isChecked = checked;
   }
 });
+
+const secondInput = document.querySelector(".description");
+
+secondInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    addDiscription();
+  }
+});
+
+function addDiscription() {
+  const note = secondInput.value.trim();
+}
