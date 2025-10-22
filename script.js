@@ -40,13 +40,10 @@ function addTask() {
     const taskObject = {
       id: taskId,
       title: task,
-      description: "",
-      isChecked: false,
       createdAt: new Date(),
     };
 
     tasks.push(taskObject);
-    console.log(tasks);
   }
 }
 
