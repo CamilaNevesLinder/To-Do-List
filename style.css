@@ -91,7 +91,8 @@ body {
   justify-content: center;
   margin-top: 3rem;
   font-family: var(--main-font);
-  font-size: 2rem;
+  font-size: 3rem;
+  font-weight: 800;
   color: var(--main-pink);
 }
 
@@ -115,6 +116,7 @@ body {
   padding: 0.4rem;
   background-color: var(--white);
   outline: none;
+  width: 100%;
 }
 
 .addBtn:hover {
@@ -150,7 +152,7 @@ body {
   font-family: var(--main-font);
   font-weight: 500;
   margin-bottom: 1rem;
-  width: 8rem;
+  width: 100%;
   cursor: text;
 }
 .titleTask:hover {
@@ -165,7 +167,7 @@ body {
   font-family: var(--main-font);
   font-weight: 500;
   margin-bottom: 1rem;
-  width: 15rem;
+  width: 100%;
   cursor: text;
 }
 .descriptionTask:hover {
@@ -174,7 +176,7 @@ body {
 
 .task-card {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -199,8 +201,9 @@ body {
 
 .task-buttons {
   display: flex;
-  margin: 1rem;
   gap: 0.5rem;
+  flex-direction: column;
+  height: 100%;
 }
 
 .task-buttons button {
