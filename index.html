@@ -27,13 +27,20 @@
         <div class="date">
           <h2 id="todayDate" class="todayDate">today</h2>
           <p class="dateInNumbers" id="dateInNumbers">hoje</p>
-          <button id="addBtn" class="addBtn">Add task</button>
+        </div>
+        <div class="inputs">
           <input
-            id="textTask"
-            class="textTask"
             type="text"
-            placeholder="Adicione uma tarefa"
+            id="titleTask"
+            class="titleTask"
+            placeholder="Title"
           />
+          <textarea
+            id="descriptionTask"
+            class="descriptionTask"
+            placeholder="description"
+          /></textarea>
+          <button type="button" id="addBtn" class="addBtn">Add task</button>
         </div>
 
         <ul id="taskList" class="tasks">

@@ -1,110 +1,64 @@
 const dateInNumbers = document.getElementById("dateInNumbers");
 const btnAdd = document.getElementById("addBtn");
 const list = document.getElementById("taskList");
-const input = document.getElementById("textTask");
+const titleInput = document.getElementById("titleTask");
+const descriptionInput = document.getElementById("descriptionTask");
 
 const today = new Date();
 const formattedDate = new Intl.DateTimeFormat("pt-BR").format(today);
 dateInNumbers.textContent = formattedDate;
 
-btnAdd.addEventListener("click", addTask);
-input.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") addTask();
-});
-
-let tasks = [];
-let idCounter = 1;
+let taskBeingEdited = null;
 
 function addTask() {
-  const task = input.value.trim();
-  if (task === "") return;
+  const title = titleInput.value.trim();
+  const description = descriptionInput.value.trim();
+  if (title === "" && description === "") return;
 
-  const taskId = idCounter++;
-  const newTask = document.createElement("li");
+  if (taskBeingEdited) {
+    const titleEl = taskBeingEdited.querySelector(".task-title");
+    const descEl = taskBeingEdited.querySelector(".task-description");
+    titleEl.textContent = title;
+    descEl.textContent = description;
+    taskBeingEdited = null;
+    btnAdd.textContent = "Add task";
+  } else {
+    const newTask = document.createElement("li");
+    newTask.classList.add("task-card");
 
-  newTask.innerHTML = `
-   <div class="task-main">
-  <label class="task-label">
-    <input type="checkbox" class="task-checkbox" data-id="${taskId}">
-    <span class="task-text">${task}</span>
-  </label>
-  <button class="delete">Delete</button>
-</div>
+    newTask.innerHTML = `
+      <div class="task-content">
+        <h3 class="task-title">${title}</h3>
+        <p class="task-description">${description}</p>
+      </div>
+      <div class="task-buttons">
+        <button class="edit-task">✎</button>
+        <button class="delete-task">×</button>
+      </div>
+    `;
 
-    <div class="description-wrapper">
-      <input type="text" class="description" placeholder="description">
-      <p class="description-text"></p>
-    </div>
-  `;
+    list.appendChild(newTask);
 
-  list.appendChild(newTask);
-  input.value = "";
+    const deleteBtn = newTask.querySelector(".delete-task");
+    deleteBtn.addEventListener("click", () => newTask.remove());
 
-  const descriptionInput = newTask.querySelector(".description");
-  const descriptionText = newTask.querySelector(".description-text");
+    const editBtn = newTask.querySelector(".edit-task");
+    editBtn.addEventListener("click", () => editTask(newTask));
+  }
 
-  descriptionInput.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const note = descriptionInput.value.trim();
-      if (note === "") return;
-
-      const taskObj = tasks.find((t) => t.id === taskId);
-      if (taskObj) taskObj.description = note;
-
-      descriptionText.innerHTML = `
-        ${note} 
-        <span class="edit-description" style="cursor:pointer; margin-left:8px;">✎</span>
-        <span class="delete-description" style="cursor:pointer; margin-left:4px;">×</span>
-      `;
-
-      descriptionInput.value = "";
-    }
-  });
-
-  descriptionText.addEventListener("click", function (e) {
-    const taskObj = tasks.find((t) => t.id === taskId);
-    if (!taskObj) return;
-
-    // Editar
-    if (e.target.classList.contains("edit-description")) {
-      descriptionInput.value = taskObj.description;
-      descriptionInput.focus();
-      descriptionText.textContent = "";
-    }
-
-    if (e.target.classList.contains("delete-description")) {
-      descriptionText.textContent = "";
-      if (taskObj) taskObj.description = "";
-    }
-  });
-
-  const taskObject = {
-    id: taskId,
-    title: task,
-    createdAt: new Date(),
-    description: "",
-  };
-  tasks.push(taskObject);
+  titleInput.value = "";
+  descriptionInput.value = "";
 }
 
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("delete")) {
-    const li = e.target.closest("li");
-    const checkbox = li.querySelector(".task-checkbox");
-    const id = Number(checkbox.dataset.id);
+function editTask(taskCard) {
+  const titleEl = taskCard.querySelector(".task-title");
+  const descEl = taskCard.querySelector(".task-description");
 
-    tasks = tasks.filter((t) => t.id !== id);
-    li.remove();
-  }
-});
+  titleInput.value = titleEl.textContent;
+  descriptionInput.value = descEl.textContent;
 
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("task-checkbox")) {
-    const checkId = Number(e.target.dataset.id);
-    const checked = e.target.checked;
+  taskBeingEdited = taskCard;
+  btnAdd.textContent = "Save Task";
+}
 
-    const task = tasks.find(({ id }) => id === checkId);
-    if (task) task.isChecked = checked;
-  }
-});
+btnAdd.addEventListener("click", addTask);
