@@ -1,0 +1,209 @@
+:root {
+  --main-pink: #d07076;
+  --ligth-pink: #fce1e6;
+  --pink-hover: #f3d0d2;
+  --background: #fce7e6;
+  --background-today: #fce1e6;
+  --text: #444;
+  --white: #fff;
+  --main-font: "Poppins", sans-serif;
+  --pink-task: #af4155;
+}
+
+body {
+  font-family: var(--main-font);
+  background-color: var(--background);
+  color: var(--text);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.top-bar {
+  background: linear-gradient(to right, #ffd6e0, #f08080);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  color: var(--main-pink);
+  font-weight: bold;
+  font-family: var(--main-font);
+}
+
+.home {
+  text-decoration: none;
+  color: var(--main-pink);
+  font-family: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 2rem;
+  border: 0.2rem solid;
+  border-radius: 2rem;
+  border-color: var(--main-pink);
+  padding: 0.4rem;
+  background-color: var(--background);
+}
+
+.home:hover {
+  background-color: var(--pink-hover);
+  scale: 1.025;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.calendar {
+  text-decoration: none;
+  color: var(--main-pink);
+  font-family: var(--text);
+  font-size: 1rem;
+  font-weight: 500;
+  border: 0.2rem solid var(--main-pink);
+  border-radius: 2rem;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--background);
+  cursor: pointer;
+  transition: all 0.2s ease; /* transição suave */
+  margin-right: 1rem;
+}
+
+.calendar:hover {
+  background-color: var(--pink-hover);
+  transform: scale(1.025);
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.routineContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  grid-template-columns: repeat(auto-fit, minmax(13.75rem, ifr));
+  gap: 1.5rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.boxRoutine {
+  background-color: var(--background-today);
+  font-family: var(--main-font);
+  font-weight: 700;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s ease;
+  width: 18rem;
+  height: auto;
+  margin-top: 3rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  box-sizing: border-box;
+}
+
+.boxRoutine:hover {
+  background-color: var(--ligth-pink);
+  transform: scale(1.02);
+}
+
+.day {
+  color: var(--pink-task);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.taskInput {
+  border: 1.5px solid var(--main-pink);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  outline: none;
+  margin-bottom: 1rem;
+  background-color: var(--white);
+  color: var(--text);
+  cursor: text;
+}
+
+.task-input:focus {
+  background-color: var(--white);
+  border-color: var(--pink-task);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.addBtn,
+.editBtn {
+  border: none;
+  background-color: var(--main-pink);
+  color: var(--white);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.addBtn:hover,
+.editBtn:hover {
+  background-color: var(--pink-task);
+  transform: scale(1.05);
+}
+
+.taskList {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.taskList li {
+  justify-content: space-between;
+  list-style-type: disc;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  color: var(--main-pink);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  justify-content: space-between;
+}
+
+.deleteBtn:hover {
+  color: var(--pink-hover);
+}
+
+span {
+  flex: 1;
+  background-color: var(--pink-hover);
+  border-radius: 1rem;
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  white-space: normal; /* permite quebra automática */
+  word-wrap: break-word; /* quebra palavras longas */
+  overflow-wrap: break-word; /* compatibilidade */
+  word-break: break-word;
+}
