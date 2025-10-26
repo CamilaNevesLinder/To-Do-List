@@ -1,41 +1,94 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const boxes = document.querySelectorAll(".boxRoutine");
+  const input = document.querySelector(".taskInput");
+  const addBtn = document.querySelector(".addBtn");
+  const daySelect = document.getElementById("daySelect");
+  const dayBoxes = document.querySelectorAll(".dayBox");
 
-  boxes.forEach((box) => {
-    const input = box.querySelector(".taskInput");
-    const addBtn = box.querySelector(".addBtn");
-    const list = box.querySelector(".taskList");
+  // segurança: avisa no console se algum elemento não foi encontrado
+  if (!input) console.warn("Input .taskInput não encontrado no DOM.");
+  if (!addBtn) console.warn("Button .addBtn não encontrado no DOM.");
+  if (!daySelect) console.warn("Select #daySelect não encontrado no DOM.");
+  if (!dayBoxes || dayBoxes.length === 0)
+    console.warn("Nenhum .dayBox encontrado no DOM.");
 
-    function addTask() {
-      const taskText = input.value.trim();
-      if (taskText === "") return;
+  let editMode = false;
+  let currentTask = null;
 
-      const li = document.createElement("li");
+  function addTask() {
+    if (!input || !daySelect) return;
 
-      const span = document.createElement("span");
-      span.textContent = taskText;
+    const taskText = input.value.trim();
+    const selectedDay = daySelect.value;
 
-      const deleteBtn = document.createElement("button");
-      deleteBtn.textContent = "✘";
-      deleteBtn.classList.add("deleteBtn");
+    // impede adicionar sem texto ou sem escolher dia
+    if (taskText === "" || selectedDay === "") return;
 
-      deleteBtn.addEventListener("click", () => {
-        li.remove();
-      });
-
-      li.appendChild(span);
-      li.appendChild(deleteBtn);
-      list.appendChild(li);
+    // se estiver editando, atualiza a tarefa
+    if (editMode && currentTask) {
+      currentTask.querySelector("span").textContent = taskText;
+      editMode = false;
+      currentTask = null;
+      if (addBtn) addBtn.textContent = "Add";
       input.value = "";
+      return;
     }
 
-    addBtn.addEventListener("click", addTask);
+    // encontra o card do dia selecionado
+    const dayBox = Array.from(dayBoxes).find((box) => {
+      const titleEl = box.querySelector(".dayTitle");
+      return titleEl && titleEl.textContent.trim() === selectedDay;
+    });
+    if (!dayBox) return;
 
-    input.addEventListener("keypress", (e) => {
+    const list = dayBox.querySelector(".taskList");
+    if (!list) return;
+
+    // cria a tarefa
+    const li = document.createElement("li");
+    li.classList.add("taskItem");
+
+    const span = document.createElement("span");
+    span.textContent = taskText;
+
+    // botão editar
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "edit";
+    editBtn.classList.add("editBtn");
+    editBtn.type = "button";
+    editBtn.addEventListener("click", () => {
+      input.value = span.textContent;
+      daySelect.value = selectedDay;
+      currentTask = li;
+      editMode = true;
+      if (addBtn) addBtn.textContent = "Save";
+      input.focus();
+    });
+
+    // botão deletar
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "✘";
+    deleteBtn.classList.add("deleteBtn");
+    deleteBtn.type = "button";
+    deleteBtn.addEventListener("click", () => li.remove());
+
+    // adiciona à lista
+    li.appendChild(span);
+    li.appendChild(editBtn);
+    li.appendChild(deleteBtn);
+    list.appendChild(li);
+    input.value = "";
+  }
+
+  // botão adicionar — só registra se existe
+  if (addBtn) addBtn.addEventListener("click", addTask);
+
+  // tecla Enter — usar keydown é mais confiável que keypress
+  if (input) {
+    input.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         e.preventDefault();
         addTask();
       }
     });
-  });
+  }
 });

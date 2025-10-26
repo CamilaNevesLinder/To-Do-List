@@ -16,75 +16,51 @@
       </nav>
     </header>
     <main class="routineContainer">
-      <div class="boxRoutine">
-        <h2 class="day">Monday</h2>
-        <input type="text" placeholder="Add a task " class="taskInput" />
-        <div class="buttons">
-          <button class="addBtn">Add</button>
-          <button class="editBtn">Edit</button>
-        </div>
-        <ul class="taskList"></ul>
-      </div>
+      <section class="inputArea">
+        <select id="daySelect">
+          <option value="">Day of the week</option>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+          <option value="Sunday">Sunday</option>
+        </select>
+        <input type="text" class="taskInput" placeholder="Add task" />
+        <button class="addBtn">Add</button>
+      </section>
 
-      <div class="boxRoutine">
-        <h2 class="day">Tusday</h2>
-        <input type="text" placeholder="Add a task " class="taskInput" />
-        <div class="buttons">
-          <button class="addBtn">Add</button>
-          <button class="editBtn">Edit</button>
+      <section class="weekGrid">
+        <div class="dayBox">
+          <h2 class="dayTitle">Monday</h2>
+          <ul class="taskList"></ul>
         </div>
-        <ul class="taskList"></ul>
-      </div>
-
-      <div class="boxRoutine">
-        <h2 class="day">Wednesday</h2>
-        <input type="text" placeholder="Add a task " class="taskInput" />
-        <div class="buttons">
-          <button class="addBtn">Add</button>
-          <button class="editBtn">Edit</button>
+        <div class="dayBox">
+          <h2 class="dayTitle">Tuesday</h2>
+          <ul class="taskList"></ul>
         </div>
-        <ul class="taskList"></ul>
-      </div>
-
-      <div class="boxRoutine">
-        <h2 class="day">Thursday</h2>
-        <input type="text" placeholder="Add a task " class="taskInput" />
-        <div class="buttons">
-          <button class="addBtn">Add</button>
-          <button class="editBtn">Edit</button>
+        <div class="dayBox">
+          <h2 class="dayTitle">Wednesday</h2>
+          <ul class="taskList"></ul>
         </div>
-        <ul class="taskList"></ul>
-      </div>
-
-      <div class="boxRoutine">
-        <h2 class="day">Friday</h2>
-        <input type="text" placeholder="Add a task " class="taskInput" />
-        <div class="buttons">
-          <button class="addBtn">Add</button>
-          <button class="editBtn">Edit</button>
+        <div class="dayBox">
+          <h2 class="dayTitle">Thursday</h2>
+          <ul class="taskList"></ul>
         </div>
-        <ul class="taskList"></ul>
-      </div>
-
-      <div class="boxRoutine">
-        <h2 class="day">Saturday</h2>
-        <input type="text" placeholder="Add a task " class="taskInput" />
-        <div class="buttons">
-          <button class="addBtn">Add</button>
-          <button class="editBtn">Edit</button>
+        <div class="dayBox">
+          <h2 class="dayTitle">Friday</h2>
+          <ul class="taskList"></ul>
         </div>
-        <ul class="taskList"></ul>
-      </div>
-
-      <div class="boxRoutine">
-        <h2 class="day">Sunday</h2>
-        <input type="text" placeholder="Add a task " class="taskInput" />
-        <div class="buttons">
-          <button class="addBtn">Add</button>
-          <button class="editBtn">Edit</button>
+        <div class="dayBox">
+          <h2 class="dayTitle">Saturday</h2>
+          <ul class="taskList"></ul>
         </div>
-        <ul class="taskList"></ul>
-      </div>
+        <div class="dayBox">
+          <h2 class="dayTitle">Sunday</h2>
+          <ul class="taskList"></ul>
+        </div>
+      </section>
     </main>
     <script src="routine.js"></script>
   </body>
