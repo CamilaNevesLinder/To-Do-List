@@ -4,13 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const daySelect = document.getElementById("daySelect");
   const dayBoxes = document.querySelectorAll(".dayBox");
 
-  // segurança: avisa no console se algum elemento não foi encontrado
-  if (!input) console.warn("Input .taskInput não encontrado no DOM.");
-  if (!addBtn) console.warn("Button .addBtn não encontrado no DOM.");
-  if (!daySelect) console.warn("Select #daySelect não encontrado no DOM.");
-  if (!dayBoxes || dayBoxes.length === 0)
-    console.warn("Nenhum .dayBox encontrado no DOM.");
-
   let editMode = false;
   let currentTask = null;
 
@@ -20,10 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskText = input.value.trim();
     const selectedDay = daySelect.value;
 
-    // impede adicionar sem texto ou sem escolher dia
     if (taskText === "" || selectedDay === "") return;
 
-    // se estiver editando, atualiza a tarefa
     if (editMode && currentTask) {
       currentTask.querySelector("span").textContent = taskText;
       editMode = false;
@@ -33,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // encontra o card do dia selecionado
     const dayBox = Array.from(dayBoxes).find((box) => {
       const titleEl = box.querySelector(".dayTitle");
       return titleEl && titleEl.textContent.trim() === selectedDay;
@@ -43,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const list = dayBox.querySelector(".taskList");
     if (!list) return;
 
-    // cria a tarefa
     const li = document.createElement("li");
     li.classList.add("taskItem");
 
@@ -71,8 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
     deleteBtn.type = "button";
     deleteBtn.addEventListener("click", () => li.remove());
 
-    // adiciona à lista
+    const btnContainer = document.createElement("div");
+    btnContainer.classList.add("btnContainer");
+    btnContainer.appendChild(editBtn);
+    btnContainer.appendChild(deleteBtn);
+
     li.appendChild(span);
+    li.appendChild(btnContainer);
+
     li.appendChild(editBtn);
     li.appendChild(deleteBtn);
     list.appendChild(li);

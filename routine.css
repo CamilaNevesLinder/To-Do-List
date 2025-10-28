@@ -94,6 +94,7 @@ body {
   margin: 1rem;
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
 .taskInput {
@@ -163,5 +164,86 @@ option:hover {
 
 .addBtn:hover {
   background-color: var(--pink-hover);
-  transform: scale(1.1);
+}
+
+.weekGrid {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.dayBox {
+  background-color: var(--pink-hover);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  width: 50%;
+  height: auto;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.dayTitle {
+  font-family: var(--main-font);
+  color: var(--main-pink);
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.editBtn {
+  background-color: var(--white);
+  border: 0.2rem solid var(--main-pink);
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.2rem;
+  cursor: pointer;
+  transition: 0.2s;
+  outline: none;
+  color: var(--main-pink);
+  font-weight: 600;
+}
+
+.editBtn:hover {
+  background-color: var(--pink-hover);
+}
+
+.deleteBtn {
+  background-color: var(--white);
+  border: 0.2rem solid var(--main-pink);
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.2rem;
+  cursor: pointer;
+  transition: 0.2s;
+  outline: none;
+  font-family: var(--text);
+  color: var(--main-pink);
+}
+
+.deleteBtn:hover {
+  background-color: var(--pink-hover);
+}
+
+.taskItem {
+  margin-top: 0.8rem;
+  font-family: var(--text);
+  font-weight: 600;
+  font-size: 1.2rem;
+  background-color: var(--background-today);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.taskList {
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+  flex-grow: 1;
+  overflow-y: auto;
 }
