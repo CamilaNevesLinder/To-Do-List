@@ -169,8 +169,10 @@ option:hover {
 .weekGrid {
   margin-top: 2rem;
   display: flex;
-  flex-direction: row;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  width: 80%;
 }
 
 .dayBox {
@@ -236,6 +238,12 @@ option:hover {
   background-color: var(--background-today);
   border-radius: 0.5rem;
   padding: 0.5rem;
+  word-wrap: break-word;
+  white-space: normal;
+  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .taskList {
@@ -246,4 +254,12 @@ option:hover {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
   flex-grow: 1;
   overflow-y: auto;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  margin-left: auto;
 }

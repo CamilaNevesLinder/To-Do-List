@@ -67,9 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     li.appendChild(span);
     li.appendChild(btnContainer);
-
-    li.appendChild(editBtn);
-    li.appendChild(deleteBtn);
     list.appendChild(li);
     input.value = "";
   }
